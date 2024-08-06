@@ -140,7 +140,7 @@ class announcedaily3(Cog):
         await ctx.send("Done!")
 
     @_ad.command()
-    async def listmsg3(self, ctx: commands.Context):
+    async def listimgs3(self, ctx: commands.Context):
         """
         List all registered announcement images
         """
@@ -260,7 +260,7 @@ class announcedaily3(Cog):
 # [p]addmsg3 <message goes here> - Adds a msg to the pool
 # [p]addimg3 http://imgurl.com/image.jpg - Adds an image to the pool
 # [p]listmsg2 - Lists all messages in the pool
-# [p]listmsg3 - Unsure about this one, but would probably just post all the images
+# [p]listimgs3 - Unsure about this one, but would probably just post all the images
 # [p]delmsg3 - Remove msg from pool
 # [p]delmsg3 - Remove image from pool
 # [p]settime3 <x> - S
