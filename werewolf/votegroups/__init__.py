@@ -1,1 +1,0 @@
-from .wolfvote import WolfVote
