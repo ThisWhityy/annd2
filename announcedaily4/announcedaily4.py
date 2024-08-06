@@ -45,14 +45,14 @@ class announcedaily4(Cog):
     async def _get_msgs(self):
         return DEFAULT_MESSAGES + await self.config.messages()
 
-    @commands.group(name="announcedaily4", aliases=["annd4"])
+    @commands.group(name="announcedaily4", aliases=["annd44"])
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     async def _ad(self, ctx: commands.Context):
         """
         Base command for managing announcedaily4 settings
 
-        Do `[p]help annd4 <subcommand>` for more details
+        Do `[p]help annd44 <subcommand>` for more details
         """
         pass
 
@@ -154,7 +154,7 @@ class announcedaily4(Cog):
         """
         Remove a message from the announcement pool
 
-        Must provide the index of the message, which can be found by using `[p]annd4 listmsg2`
+        Must provide the index of the message, which can be found by using `[p]annd44 listmsg2`
         """
         async with self.config.messages() as messages:
             try:
