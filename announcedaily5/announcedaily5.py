@@ -15,7 +15,7 @@ DEFAULT_MESSAGES = [
 ]
 
 
-class AnnounceDaily(Cog):
+class announcedaily5(Cog):
     """
     Send daily announcements
     """
@@ -45,14 +45,14 @@ class AnnounceDaily(Cog):
     async def _get_msgs(self):
         return DEFAULT_MESSAGES + await self.config.messages()
 
-    @commands.group(name="announcedaily", aliases=["annd"])
+    @commands.group(name="announcedaily5", aliases=["annd5"])
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     async def _ad(self, ctx: commands.Context):
         """
-        Base command for managing AnnounceDaily settings
+        Base command for managing announcedaily5 settings
 
-        Do `[p]help annd <subcommand>` for more details
+        Do `[p]help annd5 <subcommand>` for more details
         """
         pass
 
@@ -154,7 +154,7 @@ class AnnounceDaily(Cog):
         """
         Remove a message from the announcement pool
 
-        Must provide the index of the message, which can be found by using `[p]annd listmsg`
+        Must provide the index of the message, which can be found by using `[p]annd5 listmsg`
         """
         async with self.config.messages() as messages:
             try:
@@ -247,7 +247,7 @@ class AnnounceDaily(Cog):
             print("Sleeping for {} seconds".format((midnight - datetime.now()).seconds))
             await asyncio.sleep((midnight - datetime.now()).seconds)
 
-            if self is not self.bot.get_cog("AnnounceDaily"):
+            if self is not self.bot.get_cog("announcedaily5"):
                 print("Announce canceled, cog has been lost")
                 return
 

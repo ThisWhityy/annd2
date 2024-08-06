@@ -1,10 +1,10 @@
 from redbot.core.bot import Red
 
-from .announcedaily import AnnounceDaily
+from .announcedaily2 import announcedaily2
 
 
 async def setup(bot: Red):
-    daily = AnnounceDaily(bot)
+    daily = announcedaily2(bot)
     r = bot.add_cog(daily)
     if r is not None:
         await r
