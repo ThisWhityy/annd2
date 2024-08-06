@@ -166,7 +166,7 @@ class announcedaily2(Cog):
         await ctx.send("The following message was removed:\n```{}```".format(out))
 
     @_ad.command()
-    async def delmsg2(self, ctx: commands.Context, filename: str):
+    async def delimg2(self, ctx: commands.Context, filename: str):
         """
         Remove an image from the announcement pool
 
@@ -262,5 +262,5 @@ class announcedaily2(Cog):
 # [p]listmsg2 - Lists all messages in the pool
 # [p]listimgs2 - Unsure about this one, but would probably just post all the images
 # [p]delmsg2 - Remove msg from pool
-# [p]delmsg2 - Remove image from pool
+# [p]delimg2 - Remove image from pool
 # [p]settime2 <x> - S
