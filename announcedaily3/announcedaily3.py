@@ -59,7 +59,7 @@ class announcedaily3(Cog):
     @commands.command()
     @checks.guildowner()
     @commands.guild_only()
-    async def runannounce(self, ctx: commands.Context):
+    async def runannounce3(self, ctx: commands.Context):
         """Manually run the daily announcement"""
 
         await self.send_announcements3()
