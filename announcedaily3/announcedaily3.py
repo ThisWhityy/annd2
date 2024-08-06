@@ -62,11 +62,11 @@ class announcedaily3(Cog):
     async def runannounce(self, ctx: commands.Context):
         """Manually run the daily announcement"""
 
-        await self.send_announcements()
+        await self.send_announcements3()
         await ctx.send("Success")
 
     @_ad.command()
-    async def setchannel(self, ctx: commands.Context, channel: discord.TextChannel = None):
+    async def setchannel3(self, ctx: commands.Context, channel: discord.TextChannel = None):
         """
         Set the announcement channel for this server
 
@@ -80,7 +80,7 @@ class announcedaily3(Cog):
             await ctx.send("Announcement channel has been cleared")
 
     @_ad.command()
-    async def addmsg(self, ctx: commands.Context, *, msg):
+    async def addmsg3(self, ctx: commands.Context, *, msg):
         """
         Add a message to the pool of announcement messages
         """
@@ -90,7 +90,7 @@ class announcedaily3(Cog):
         await ctx.send("Message successfully added!")
 
     @_ad.command()
-    async def addimg(self, ctx: commands.Context, filename=None):
+    async def addimg3(self, ctx: commands.Context, filename=None):
         """
         Add an image to the pool of announcement images
 
@@ -128,7 +128,7 @@ class announcedaily3(Cog):
             await ctx.send("You must attach an image when sending this command")
 
     @_ad.command()
-    async def listmsg(self, ctx: commands.Context):
+    async def listmsg2(self, ctx: commands.Context):
         """
         List all registered announcement messages
         """
@@ -140,7 +140,7 @@ class announcedaily3(Cog):
         await ctx.send("Done!")
 
     @_ad.command()
-    async def listimg(self, ctx: commands.Context):
+    async def listmsg3(self, ctx: commands.Context):
         """
         List all registered announcement images
         """
@@ -150,23 +150,23 @@ class announcedaily3(Cog):
         await ctx.send("Done!")
 
     @_ad.command()
-    async def delmsg(self, ctx: commands.Context, index: int):
+    async def delmsg3(self, ctx: commands.Context, index: int):
         """
         Remove a message from the announcement pool
 
-        Must provide the index of the message, which can be found by using `[p]annd3 listmsg`
+        Must provide the index of the message, which can be found by using `[p]annd3 listmsg2`
         """
         async with self.config.messages() as messages:
             try:
                 out = messages.pop(index)
             except IndexError:
-                await ctx.send("Invalid index, check valid indexes with `listmsg` command")
+                await ctx.send("Invalid index, check valid indexes with `listmsg2` command")
                 return
 
         await ctx.send("The following message was removed:\n```{}```".format(out))
 
     @_ad.command()
-    async def delimg(self, ctx: commands.Context, filename: str):
+    async def delmsg3(self, ctx: commands.Context, filename: str):
         """
         Remove an image from the announcement pool
 
@@ -180,7 +180,7 @@ class announcedaily3(Cog):
             await ctx.send("Successfully removed {}".format(filename))
 
     @_ad.command()
-    async def settime(self, ctx: commands.Context, minutes_from_now: int):
+    async def settime3(self, ctx: commands.Context, minutes_from_now: int):
         """
         Set the daily announcement time
 
@@ -198,7 +198,7 @@ class announcedaily3(Cog):
             "**Changes will apply after next scheduled announcement or reload**".format(h, m, s)
         )
 
-    async def send_announcements(self):
+    async def send_announcements3(self):
         messages = await self._get_msgs()
         images = await self.config.images()
 
@@ -251,16 +251,16 @@ class announcedaily3(Cog):
                 print("Announce canceled, cog has been lost")
                 return
 
-            await self.send_announcements()
+            await self.send_announcements33()
 
             await asyncio.sleep(3)
 
 
-# [p]setchannel #channelname - Set the announcement channel per server
-# [p]addmsg <message goes here> - Adds a msg to the pool
-# [p]addimg http://imgurl.com/image.jpg - Adds an image to the pool
-# [p]listmsg - Lists all messages in the pool
-# [p]listimg - Unsure about this one, but would probably just post all the images
-# [p]delmsg - Remove msg from pool
-# [p]delimg - Remove image from pool
-# [p]settime <x> - S
+# [p]setchannel3 #channelname - Set the announcement channel per server
+# [p]addmsg3 <message goes here> - Adds a msg to the pool
+# [p]addimg3 http://imgurl.com/image.jpg - Adds an image to the pool
+# [p]listmsg2 - Lists all messages in the pool
+# [p]listmsg3 - Unsure about this one, but would probably just post all the images
+# [p]delmsg3 - Remove msg from pool
+# [p]delmsg3 - Remove image from pool
+# [p]settime3 <x> - S

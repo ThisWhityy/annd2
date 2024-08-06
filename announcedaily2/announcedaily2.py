@@ -45,28 +45,28 @@ class announcedaily2(Cog):
     async def _get_msgs(self):
         return DEFAULT_MESSAGES + await self.config.messages()
 
-    @commands.group(name="announcedaily2", aliases=["annd2"])
+    @commands.group(name="announcedaily2", aliases=["annd"])
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     async def _ad(self, ctx: commands.Context):
         """
-        Base command for managing announcedaily2 settings
+        Base command for managing AnnounceDaily settings
 
-        Do `[p]help annd2 <subcommand>` for more details
+        Do `[p]help annd <subcommand>` for more details
         """
         pass
 
     @commands.command()
     @checks.guildowner()
     @commands.guild_only()
-    async def runannounce(self, ctx: commands.Context):
+    async def runannounce2(self, ctx: commands.Context):
         """Manually run the daily announcement"""
 
-        await self.send_announcements()
+        await self.send_announcements2()
         await ctx.send("Success")
 
     @_ad.command()
-    async def setchannel(self, ctx: commands.Context, channel: discord.TextChannel = None):
+    async def setchannel2(self, ctx: commands.Context, channel: discord.TextChannel = None):
         """
         Set the announcement channel for this server
 
@@ -80,7 +80,7 @@ class announcedaily2(Cog):
             await ctx.send("Announcement channel has been cleared")
 
     @_ad.command()
-    async def addmsg(self, ctx: commands.Context, *, msg):
+    async def addmsg2(self, ctx: commands.Context, *, msg):
         """
         Add a message to the pool of announcement messages
         """
@@ -90,7 +90,7 @@ class announcedaily2(Cog):
         await ctx.send("Message successfully added!")
 
     @_ad.command()
-    async def addimg(self, ctx: commands.Context, filename=None):
+    async def addimg2(self, ctx: commands.Context, filename=None):
         """
         Add an image to the pool of announcement images
 
@@ -128,7 +128,7 @@ class announcedaily2(Cog):
             await ctx.send("You must attach an image when sending this command")
 
     @_ad.command()
-    async def listmsg(self, ctx: commands.Context):
+    async def listmsg2(self, ctx: commands.Context):
         """
         List all registered announcement messages
         """
@@ -140,7 +140,7 @@ class announcedaily2(Cog):
         await ctx.send("Done!")
 
     @_ad.command()
-    async def listimg(self, ctx: commands.Context):
+    async def listmsg2(self, ctx: commands.Context):
         """
         List all registered announcement images
         """
@@ -150,23 +150,23 @@ class announcedaily2(Cog):
         await ctx.send("Done!")
 
     @_ad.command()
-    async def delmsg(self, ctx: commands.Context, index: int):
+    async def delmsg2(self, ctx: commands.Context, index: int):
         """
         Remove a message from the announcement pool
 
-        Must provide the index of the message, which can be found by using `[p]annd2 listmsg`
+        Must provide the index of the message, which can be found by using `[p]annd listmsg2`
         """
         async with self.config.messages() as messages:
             try:
                 out = messages.pop(index)
             except IndexError:
-                await ctx.send("Invalid index, check valid indexes with `listmsg` command")
+                await ctx.send("Invalid index, check valid indexes with `listmsg2` command")
                 return
 
         await ctx.send("The following message was removed:\n```{}```".format(out))
 
     @_ad.command()
-    async def delimg(self, ctx: commands.Context, filename: str):
+    async def delmsg2(self, ctx: commands.Context, filename: str):
         """
         Remove an image from the announcement pool
 
@@ -180,7 +180,7 @@ class announcedaily2(Cog):
             await ctx.send("Successfully removed {}".format(filename))
 
     @_ad.command()
-    async def settime(self, ctx: commands.Context, minutes_from_now: int):
+    async def settime2(self, ctx: commands.Context, minutes_from_now: int):
         """
         Set the daily announcement time
 
@@ -198,7 +198,7 @@ class announcedaily2(Cog):
             "**Changes will apply after next scheduled announcement or reload**".format(h, m, s)
         )
 
-    async def send_announcements(self):
+    async def send_announcements2(self):
         messages = await self._get_msgs()
         images = await self.config.images()
 
@@ -247,20 +247,20 @@ class announcedaily2(Cog):
             print("Sleeping for {} seconds".format((midnight - datetime.now()).seconds))
             await asyncio.sleep((midnight - datetime.now()).seconds)
 
-            if self is not self.bot.get_cog("announcedaily2"):
+            if self is not self.bot.get_cog("AnnounceDaily"):
                 print("Announce canceled, cog has been lost")
                 return
 
-            await self.send_announcements()
+            await self.send_announcements2()
 
             await asyncio.sleep(3)
 
 
-# [p]setchannel #channelname - Set the announcement channel per server
-# [p]addmsg <message goes here> - Adds a msg to the pool
-# [p]addimg http://imgurl.com/image.jpg - Adds an image to the pool
-# [p]listmsg - Lists all messages in the pool
-# [p]listimg - Unsure about this one, but would probably just post all the images
-# [p]delmsg - Remove msg from pool
-# [p]delimg - Remove image from pool
-# [p]settime <x> - S
+# [p]setchannel2 #channelname - Set the announcement channel per server
+# [p]addmsg2 <message goes here> - Adds a msg to the pool
+# [p]addimg2 http://imgurl.com/image.jpg - Adds an image to the pool
+# [p]listmsg2 - Lists all messages in the pool
+# [p]listmsg2 - Unsure about this one, but would probably just post all the images
+# [p]delmsg2 - Remove msg from pool
+# [p]delmsg2 - Remove image from pool
+# [p]settime2 <x> - S
